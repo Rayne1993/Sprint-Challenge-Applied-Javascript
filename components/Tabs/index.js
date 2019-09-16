@@ -17,15 +17,17 @@ function tabCreator(tabs) {
     return newTab;
 }
 
+//getting element to append child to
 const tabContainer = document.querySelector(".topics")
 
+//get request to axios
 axios.get("https://lambda-times-backend.herokuapp.com/topics")
     .then( response => {
         //console.log(response);
         response.data.topics.forEach( item => {
             let tab = tabCreator(item);
             tabContainer.appendChild(tab);
-        })
+        });
     })
     .catch( err => {
         console.log("Error", err);
