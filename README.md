@@ -30,13 +30,23 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. What is the DOM?
 
+Document Object Model, allows you to dynamically access and update the site.
+
 2. What is an event?
+
+An event is when a user interacts with the website.
 
 3. What is an event listener?
 
+An event listener listens for user events, such as a mouse click, and responds to that event.
+
 4. Why would we convert a NodeList into an Array?
 
+So you can use array methods on the data.
+
 5. What is a component?
+
+Components allow you to create and add elements to your webpage separate from the rest of your code. Uses html, css, and javascript.
 
 ### Git Set up
 
