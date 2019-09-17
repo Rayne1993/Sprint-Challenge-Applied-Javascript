@@ -48,39 +48,114 @@ function articleCreator(articleInfo) {
     return card;
 }
 
-const cardContainer = document.querySelector(".cards-container");
+//solution code from Winnie, did not work, all cards on screen, don't 
+//know what I'm doing wrong
+// const cardContainer = document.querySelector(".cards-container");
+// axios.get("https://lambda-times-backend.herokuapp.com/articles")
+//     .then( response => {
+//        const articles = response.data.articles;
+//        console.log(response);
+//        for (topic in articles) {
+//            articles[topic].forEach( articleInfo => {
+//                cardContainer.appendChild(articleCreator(articleInfo));
+//            });
+//         }
+//     });
 
+//chained then responses together, got only bootstrap cards on screen,
+//but can't click through tabs
+const cardContainer = document.querySelector(".cards-container");
 axios.get("https://lambda-times-backend.herokuapp.com/articles")
     .then( response => {
-        //console.log(response);
-        const javascript = response.data.articles.javascript;
-        const bootstrap = response.data.articles.bootstrap;
-        const technology = response.data.articles.technology;
-        const jquery = response.data.articles.jquery;
-        const node = response.data.articles.node;
-
-        javascript.forEach( item => {
-            const newCard = articleCreator(item)
-            cardContainer.appendChild(newCard);
-        });
-        bootstrap.forEach( item => {
-            const newCard = articleCreator(item)
-            cardContainer.appendChild(newCard);
-        });
-        technology.forEach( item => {
-            const newCard = articleCreator(item)
-            cardContainer.appendChild(newCard);
-        });
-        jquery.forEach( item => {
-            const newCard = articleCreator(item)
-            cardContainer.appendChild(newCard);
-        });
-        node.forEach( item => {
-            const newCard = articleCreator(item)
-            cardContainer.appendChild(newCard);
-        });
+        response.data.articles.bootstrap.forEach( event => {
+            cardContainer.appendChild(articleCreator(event));
+        })
+    })
+    
+    .then (response => {
+        response.data.articles.javascript.forEach( event => {
+            cardContainer.appendChild(articleCreator(event));
+        })
+    })
+    
+    .then (response => {
+        response.data.articles.technology.forEach( event => {
+            cardContainer.appendChild(articleCreator(event));
+        })
+    })
+    
+    .then (response => {
+        response.data.articles.node.forEach( event => {
+            cardContainer.appendChild(articleCreator(event));
+        })
+    })
+    
+    .then (response => {
+        response.data.articles.jquery.forEach( event => {
+            cardContainer.appendChild(articleCreator(event));
+        })
     })
     .catch(function(err) {
         console.log("error")
     })
 
+// //added array place holder on top, used for - didn't work
+// const cardContainer = document.querySelector(".cards-container");
+
+// let x = [];
+
+// axios.get("https://lambda-times-backend.herokuapp.com/articles")
+//     .then( response => {
+//         //console.log(response);
+//         for (y in response.data.articles) {
+//             x.push(y);
+//         }
+//         x.forEach (v => {
+//             response.data.articles[v].forEach( item =>  {
+//                 cardContainer.appendChild(articleCreator(item));
+//             })
+//         })
+//     })
+//     .catch(function(err) {
+//         console.log("error")
+//     })
+
+//using forEach on each catagory - didn't work
+//const cardContainer = document.querySelector(".cards-container");
+
+// let x = [];
+        
+// axios.get("https://lambda-times-backend.herokuapp.com/articles")
+//     .then( response => {
+//         console.log(response);
+        
+//         const javascript = response.data.articles.javascript;
+//         const bootstrap = response.data.articles.bootstrap;
+//         const technology = response.data.articles.technology;
+//         const jquery = response.data.articles.jquery;
+//         const node = response.data.articles.node;
+        
+//         javascript.forEach( item => {
+//             const newCard = articleCreator(item)
+//             cardContainer.appendChild(newCard);
+//         });
+//         bootstrap.forEach( item => {
+//             const newCard = articleCreator(item)
+//             cardContainer.appendChild(newCard);
+//         });
+//         technology.forEach( item => {
+//             const newCard = articleCreator(item)
+//             cardContainer.appendChild(newCard);
+//         });
+//         jquery.forEach( item => {
+//             const newCard = articleCreator(item)
+//             cardContainer.appendChild(newCard);
+//         });
+//         node.forEach( item => {
+//             const newCard = articleCreator(item)
+//             cardContainer.appendChild(newCard);
+//         });  
+//     })
+//     .catch(function(err) {
+//         console.log("error")
+//     })

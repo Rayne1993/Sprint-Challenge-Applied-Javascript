@@ -18,7 +18,7 @@ function tabCreator(tabs) {
 }
 
 //getting element to append child to
-const tabContainer = document.querySelector(".topics")
+const tabContainer = document.querySelector(".topics");
 
 //get request to axios
 axios.get("https://lambda-times-backend.herokuapp.com/topics")
